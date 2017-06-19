@@ -43,4 +43,5 @@
    })();
 ```
 # demo地址
+样式有问题  懒得改了  在chrome手机调试模式看就行了。。。
 * [demo点我](http://WormGirl.github.io/imagesUpload/demo.html)
