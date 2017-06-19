@@ -43,4 +43,4 @@
    })();
 ```
 #demo地址
-* [demo点我]http://WormGirl.github.io/imagesUpload/demo.html
+* [demo点我](http://WormGirl.github.io/imagesUpload/demo.html)
