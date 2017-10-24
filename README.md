@@ -7,10 +7,10 @@
 
 ```javascript
 <div class="upload-wrap">
-            <img id="previewResult" />
-            <button class="button blue rarrow file-input-mask"><input type="file" id="file" accept="image/*" /></button>
-        </div>
-        <img id="preview" />
+   <img id="previewResult" />
+   <button class="button blue rarrow file-input-mask"><input type="file" id="file" accept="image/*" /></button>
+</div>
+<img id="preview" />
 ```
 
 ```javascript
