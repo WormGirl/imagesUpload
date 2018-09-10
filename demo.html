@@ -1,138 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style type="text/css">
-        input,
-        button {
-            outline: none;
-            box-shadow: none;
-        }
-
-        label {
-            /*设置label的样式*/
-            width: 3.586667rem;
-            height: 1.36rem;
-            display: block;
-        }
-
-        .radio {
-            width: 3.586667rem;
-            height: 1.36rem;
-            display: inline-block;
-            padding-top: 0.6rem;
-        }
-
-        .radio .option {
-            /*把优化后的按钮图片设置为该div的背景图片，把该div定位到原生样式的上方，遮盖住原生样式。*/
-            width: 3.586667rem;
-            height: 1.36rem;
-            background-size: cover;
-            background: url(img/zlmb_cmxzN.png) no-repeat;
-            background-size: cover;
-        }
-
-        .radio .options {
-            /*把优化后的按钮图片设置为该div的背景图片，把该div定位到原生样式的上方，遮盖住原生样式。*/
-            width: 3.586667rem;
-            height: 1.36rem;
-            background-size: cover;
-            background: url(img/zlmb_ferxz.png) no-repeat;
-            background-size: cover;
-        }
-
-        .radio input[type="radio"] {
-            /*为了保险起见，把原生样式隐藏掉*/
-            display: inline-block;
-            margin-right: 15px;
-            opacity: 0;
-            position: absolute;
-        }
-
-        input[type="radio"].cm-check:checked+div {
-            /*当radiuo被选中时，把input下边的div标签的背景图片替换掉*/
-            background: url(img/zlmb_cmxzC.png) no-repeat;
-            background-size: cover;
-        }
-
-        input[type="radio"].fer-check:checked+div {
-            /*当radiuo被选中时，把input下边的div标签的背景图片替换掉*/
-            background: url(img/zlmb_ferxzC.png) no-repeat;
-            background-size: cover;
-        }
-
-        .zlmb-tijiao {
-            width: 5.0rem;
-            height: 1.333333rem;
-            margin-top: 0.666667rem;
-            background: url(img/zlmb_tijiao.png)no-repeat;
-            background-size: 100%;
-            border: none;
-        }
-
-        .zlmb-file {
-            width: 6.706667rem;
-            height: 3.146667rem;
-            /*margin-top:2.133333rem;*/
-            /*opacity: 0;*/
-        }
-
-        .zlmb-fileBox {
-            width: 6.706667rem;
-            height: 3.146667rem;
-            margin: 0 auto;
-            background: url(img/zlmb_xiangjizz.png)no-repeat;
-            background-size: 100%;
-            /*padding-top:  2.133333rem;*/
-        }
-
-        .zlmb-jionForm {
-            top: .5rem;
-            position: relative;
-            text-align: center;
-        }
-
-        .numverText {
-            color: #ecc200;
-            font-size: 0.426667rem;
-            font-family: "微软雅黑";
-            font-weight: bold;
-        }
-
-        .mbNumers {
-            background: #1a0526;
-            border: 2px solid #ecc200;
-            width: 6.986667rem;
-            height: 1.146667rem;
-            color: #a0a0a0;
-            font-size: 0.333333rem;
-            text-indent: 0.613333rem
-        }
-
-        .mobileNumber {
-            padding-top: 1rem;
-        }
-    </style>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="css/page-common.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/style1.css" />
+  <meta charset="UTF-8">
+  <title>移动端图片上传裁切demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 </head>
-
 <body>
-    <!-- 代码部分begin -->
-    <div class="zlmb-jionDetail Box">
-        <div class="upload-wrap">
-            <img id="previewResult" />
-            <button class="button blue rarrow file-input-mask"><input type="file" id="file" accept="image/*" /></button>
-        </div>
-        <img id="preview" />
+  <div>
+    <div class="upload-wrap">
+      <img id="previewResult"/>
+      <button class="file-input-mask"><input type="file" id="file" accept="image/*" /></button>
     </div>
-
-
+    <img id="preview"/>
+  </div>
 </body>
 <script type="text/javascript" src="js/JQuery-3.1.1.min.js"></script>
 <script src="js/resize.min.js"></script>
@@ -141,33 +21,32 @@
 <script src="js/alloy_finger.js"></script>
 <script type="text/javascript">
 (function () {
-    var _input = document.querySelector('#file')
-    _input.addEventListener('change', function (e) {
-      canvasResize(this.files[0], {
-        crop: false,
-        quality: 0.9,
-        rotate: 0,
-        callback(baseStr) {
-            $("#preview").attr("src",baseStr).hide();
-            var crop_btn = document.querySelector("#crop_btn");
-            new AlloyCrop({
-                image_src: $("#preview").attr("src"),
-                width: 300,
-                height: 300,
-                ok_text: "确定", // optional parameters , the default value is ok
-                cancel_text: "取消", // optional parameters , the default value is cancel
-                ok: function (base64, canvas) {
-                    $("#previewResult").attr('src',base64);
-                    $(".file-input-mask").css("opacity","0");
-                },
-                cancel: function () {
-                }
-            });
-        }
-      })
+  var _input = document.querySelector('#file')
+  _input.addEventListener('change', function (e) {
+    canvasResize(this.files[0], {
+      crop: false,
+      quality: 0.9,
+      rotate: 0,
+      callback(baseStr) {
+          $("#preview").attr("src",baseStr).hide();
+          var crop_btn = document.querySelector("#crop_btn");
+          new AlloyCrop({
+            image_src: $("#preview").attr("src"),
+            width: 300,
+            height: 300,
+            ok_text: "确定", // optional parameters , the default value is ok
+            cancel_text: "取消", // optional parameters , the default value is cancel
+            ok: function (base64, canvas) {
+              $("#previewResult").attr('src',base64);
+              $(".file-input-mask").css("opacity","0");
+            },
+            cancel: function () {
+              // 取消回调
+            }
+        })
+      }
     })
-   })();
+  })
+})()
 </script>
-<!-- 代码部分end -->
-
 </html>
